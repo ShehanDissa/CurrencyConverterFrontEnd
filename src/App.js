@@ -1,6 +1,7 @@
 import React, {Suspense, useEffect} from 'react';
 import ConverterForm from "./components/ConverterForm";
 import i18next from "i18next";
+import LanguageButtons from "./components/LanguageButtons";
 
 function App() {
 
@@ -13,8 +14,9 @@ function App() {
   return (
       <Suspense fallback={null}>
           <div>
-              <main className={"bg-white text-gray-900"}>
+              <main className={"text-gray-900 h-screen grid place-items-center bg-gradient-to-b from-cyan-100 to-green-400"}>
                   <ConverterForm/>
+                  <LanguageButtons/>
               </main>
           </div>
       </Suspense>

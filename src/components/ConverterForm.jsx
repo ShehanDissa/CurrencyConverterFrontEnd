@@ -5,10 +5,6 @@ import i18next from "i18next";
 const ConverterForm = () => {
     const {t} = useTranslation(['common'])
 
-    const changeLanguage = (e) => {
-        i18next.changeLanguage(e.target.value);
-    };
-
     const [formData, setFormData] = useState({
         // initialize with form fields
         sourceCurrency: 'USD',
@@ -98,23 +94,13 @@ const ConverterForm = () => {
                     <button type="submit" className="bg-blue-500 text-white p-2 rounded-md w-full">{t("submit")}</button>
                 </div>
 
-                <div>
+                <div className={"flex text-center flex-col"}>
                     <label id="outputLabel" htmlFor="output" className="text-sm font-medium text-gray-600 hidden">Converted Amount</label>
                     <label id="output" className="mt-1 p-2 rounded-md w-full hidden"></label>
                 </div>
             </form>
-            <div className={"flex flex-row gap-5 text-center content-center justify-center"}>
-                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"en"} onClick={changeLanguage}>English
-                </button>
-                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"si"} onClick={changeLanguage}>සිංහල
-                </button>
-                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"jp"} onClick={changeLanguage}>日本語
-                </button>
-                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"hi"} onClick={changeLanguage}>हिंदी
-                </button>
-            </div>
-
         </div>
+
     );
 };
 
