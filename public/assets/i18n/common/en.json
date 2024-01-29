@@ -1,0 +1,7 @@
+{
+  "title": "Currency Converter",
+  "from_currency": "From Currency",
+  "to_currency": "To Currency",
+  "amount": "Amount",
+  "submit": "Submit"
+}

@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
+import {useTranslation} from "react-i18next";
+import i18next from "i18next";
 
 const ConverterForm = () => {
+    const {t} = useTranslation(['common'])
+
+    const changeLanguage = (e) => {
+        i18next.changeLanguage(e.target.value);
+    };
 
     const [formData, setFormData] = useState({
         // initialize with form fields
@@ -49,11 +56,11 @@ const ConverterForm = () => {
 
     return (
         <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
-            <h2 className="text-2xl font-semibold mb-4 text-center">Currency Converter</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center">{t("title")}</h2>
             <form id="converterForm" className="space-y-4" onSubmit={handleSubmit}>
 
                 <div>
-                    <label htmlFor="sourceCurrency" className="block text-sm font-medium text-gray-600">Select Box 1</label>
+                    <label htmlFor="sourceCurrency" className="block text-sm font-medium text-gray-600">{t("from_currency")}</label>
                     <select id="sourceCurrency" name="sourceCurrency" value={formData.sourceCurrency} onChange={handleChange}
                             className="mt-1 p-2 border border-gray-300 rounded-md w-full">
                         <option value="USD">USD</option>
@@ -67,7 +74,7 @@ const ConverterForm = () => {
 
 
                 <div>
-                    <label htmlFor="targetCurrency" className="block text-sm font-medium text-gray-600">Select Box 2</label>
+                    <label htmlFor="targetCurrency" className="block text-sm font-medium text-gray-600">{t("to_currency")}</label>
                     <select id="targetCurrency" name="targetCurrency" value={formData.targetCurrency} onChange={handleChange}
                             className="mt-1 p-2 border border-gray-300 rounded-md w-full">
                         <option value="USD">USD</option>
@@ -81,14 +88,14 @@ const ConverterForm = () => {
 
 
                 <div>
-                    <label htmlFor="amount" className="block text-sm font-medium text-gray-600">Amount</label>
+                    <label htmlFor="amount" className="block text-sm font-medium text-gray-600">{t("amount")}</label>
                     <input type="number" id="amount" name="amount" value={formData.amount} onChange={handleChange}
                            className="mt-1 p-2 border border-gray-300 rounded-md w-full"/>
                 </div>
 
 
                 <div>
-                    <button type="submit" className="bg-blue-500 text-white p-2 rounded-md w-full">Submit</button>
+                    <button type="submit" className="bg-blue-500 text-white p-2 rounded-md w-full">{t("submit")}</button>
                 </div>
 
                 <div>
@@ -96,6 +103,16 @@ const ConverterForm = () => {
                     <label id="output" className="mt-1 p-2 rounded-md w-full hidden"></label>
                 </div>
             </form>
+            <div className={"flex flex-row gap-5 text-center content-center justify-center"}>
+                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"en"} onClick={changeLanguage}>English
+                </button>
+                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"si"} onClick={changeLanguage}>සිංහල
+                </button>
+                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"jp"} onClick={changeLanguage}>日本語
+                </button>
+                <button type="button" className="bg-gray-400 p-2 rounded-md text-xs text-black" value={"hi"} onClick={changeLanguage}>हिंदी
+                </button>
+            </div>
 
         </div>
     );
