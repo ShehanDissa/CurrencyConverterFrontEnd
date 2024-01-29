@@ -21,7 +21,7 @@ const ConverterForm = () => {
         e.preventDefault();
         // Call the function to send data to the API here
         sendDataToAPI(formData).then(r =>
-                document.getElementById("output").innerHTML = r
+                document.getElementById("output").innerHTML = Intl.NumberFormat(i18next.language, { style: 'currency', currency: formData.targetCurrency }).format(r)
         );
         document.getElementById("outputLabel").classList.remove("hidden");
         document.getElementById("output").classList.remove("hidden");
@@ -51,7 +51,7 @@ const ConverterForm = () => {
 
 
     return (
-        <div className="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+        <div className="max-w-md mx-auto bg-white border-2 border-black p-8 rounded-md shadow-md">
             <h2 className="text-2xl font-semibold mb-4 text-center">{t("title")}</h2>
             <form id="converterForm" className="space-y-4" onSubmit={handleSubmit}>
 
@@ -85,7 +85,7 @@ const ConverterForm = () => {
 
                 <div>
                     <label htmlFor="amount" className="block text-sm font-medium text-gray-600">{t("amount")}</label>
-                    <input type="number" id="amount" name="amount" value={formData.amount} onChange={handleChange}
+                    <input type="number" id="amount" name="amount" min={"0"} value={formData.amount} onChange={handleChange}
                            className="mt-1 p-2 border border-gray-300 rounded-md w-full"/>
                 </div>
 
